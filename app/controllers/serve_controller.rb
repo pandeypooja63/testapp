@@ -26,12 +26,12 @@ class ServeController < ApplicationController
                          'Thingstodo'=> 'The River Walk is a large place to learn extra on the subject of the history of San Antonio. It winds from side to side the old downtown region and a lot of noted historic sites are inside trouble-free walking space. River cruises are available with interpreters who inform stories of the record of the city and spot out points of historic attention. Also enjoy the lush landscapes, attractive pathways, chiming waterfalls and outdoor art',
                          'lattitude'=>'29.423197900000000000',
                          'longitude'=>'-98.490860399999970000',
-                         'p2009'=>'2',
-                         'p2010'=>'5',
-                         'p2011'=>'7',
+                         'p2009'=>'1',
+                         'p2010'=>'2',
+                         'p2011'=>'4',
                          'p2012'=>'8',
-                         'p2013'=>'8',
-                         'p2014'=>'9'
+                         'p2013'=>'7',
+                         'p2014'=>'10'
 		        },
                         {
                         'name'=>'The Alamo',
@@ -42,13 +42,28 @@ class ServeController < ApplicationController
                        	'Thingstodo'=> 'People visit this educational museum to gain knowledge about the important role it played in Texas effort for freedom. It is an excellent visiting place for the people who are fond of knowing history',
                          'lattitude'=>'29.425705400000000000',
                          'longitude'=>'-98.486074900000000000',
-                         'p2009'=>'2',
-                         'p2010'=>'5',
-                         'p2011'=>'7',
+                         'p2009'=>'3',
+                         'p2010'=>'2',
+                         'p2011'=>'6',
                          'p2012'=>'8',
                          'p2013'=>'8',
-                         'p2014'=>'9'
-                        }
+                         'p2014'=>'10'
+                        },
+                        {
+                        'name'=>' Dallas World Aquarium',
+                        'InterestingFacts'=>'The entire facility shows species as of five continents, three oceans, 14 countries, and numerous oceans and waterways.
+                         - It is a more than of 600,000 gallons of water situate that is filled by means of sharks, manatees and a lot more species that are not found in other places. 
+                         - Mayan dancing is the most interesting and liked activity within this place.',                       	
+                        'Thingstodo'=> 'This is very interesting to see the underground water bodies in the natural habitat. It offers number of activities to carry out which include animal contacts, gift shops, picnic area, private dealings and dinning.',
+                         'lattitude'=>'32.783585',
+                         'longitude'=>'-96.805077',
+                         'p2009'=>'1',
+                         'p2010'=>'2',
+                         'p2011'=>'5',
+                         'p2012'=>'6',
+                         'p2013'=>'8',
+                         'p2014'=>'10'
+                         }
                        
 		     ]
 	render json: places

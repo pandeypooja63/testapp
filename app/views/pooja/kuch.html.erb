@@ -3,8 +3,7 @@
 <html>
 <head>
 
-<h1 style="text-align:center"; style ="color:red"; >Texas Top Attractions</h1>
-
+<h1 class="h" style= "text-align:center"; >Texas Top Attractions</h1>
 
 
   <script 
@@ -29,9 +28,9 @@
       eachrow.append($("<td>" + k.name + "</td>"))
       eachrow.append($("<td>" + k.InterestingFacts + "</td>"));
       eachrow.append($("<td>" + k.Thingstodo + "</td>"));
-      eachrow.append($("<td>" + "<input type='button' value='press me' onclick='mapping("+k.lattitude+","+k.longitude+")'></input>" + "</td>"));
+      eachrow.append($("<td>" + "<input type='button' class='bt2' value='press me' onclick='mapping("+k.lattitude+","+k.longitude+")'></input>" + "</td>"));
                     
-      eachrow.append($("<td>"+"<input type='button' value='Click here to see the trends' onclick='drawChart("+k.p2009 +","+ k.p2010+","+k.p2011+","+k.p2012+","+k.p2013+","+k.p2014+")'></input>"+"</td>"));                
+      eachrow.append($("<td>"+"<input type='button' class='bt1' value='Click here to see the trends' onclick='drawChart("+k.p2009 +","+ k.p2010+","+k.p2011+","+k.p2012+","+k.p2013+","+k.p2014+")'></input>"+"</td>"));                
 
 
 
@@ -87,12 +86,12 @@
       // draws it.
       function drawChart(x,y,z,p,q,r) 
 	{
-google.setOnLoadCallback(drawChart);
+         google.setOnLoadCallback(drawChart);
 	console.log(x,y,z,p,q,r);
       // Create the data table.
       	var data = new google.visualization.DataTable();
-      	data.addColumn('string', 'Topping');
-      	data.addColumn('number', 'Slices');
+      	data.addColumn('string', 'Year');
+      	data.addColumn('number','Million');
       	data.addRows([
         ['2009', x],
         ['2010', y],
@@ -103,51 +102,122 @@ google.setOnLoadCallback(drawChart);
       			]);
 
       // Set chart options
-      	var options = {'title':'How Much Pizza I Ate Last Night',
-                     'width':400,
-                     'height':300};
+      	var options = {'title':'Yearwise Tourist Arrival Trends,from 2009 to 2014',
+                     'width':500,
+                     'height':400};
 
       // Instantiate and draw our chart, passing in some options.
-      	var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+      	var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
       	chart.draw(data, options);
 	$("#chart_div").show();
      	}
 
  </script>
 
+<style>
+    .h{     
+            color:red; 
+            text-align:center;
+ 
+          }	
 
 
- <style>
+   body 
+	{
+		background-size: 1014px 788px;
+                background-image: url("http://img1.jurko.net/wall/paper/wallpaper_18295.jpg");
+		background-repeat: repeat;
+	}
+        
+	.bt{
+    
+    -webkit-border-radius: 28;
+    -moz-border-radius: 28;
+    border-radius: 10px;
+    font-family: Times New Roman;
+    font-size:30px;
+    background-color: purple;
+    color:orange ;
+    margin-left: 25%;
+    margin-right: 40%;
+    margin-top: 10%;
+    width: 50%;
+    height: 40%;
+    text-align:center;
+    font-weight: bold;
+    font-size : 160%;
+    border: 1px solid brown;
+    border-collapse: collapse;
+    
+            } 
 
-      button {
-              color:blue ;
-              text-align:center;
-              background-color:black
-              font-weight: bold;
-              font-size : 160%; 
-              border: 1px solid brown;
-              border-collapse: collapse;
-              }
-      table, th, td {
-         border: 1px solid brown;
+.bt1{
+    
+    -webkit-border-radius: 14;
+    -moz-border-radius: 14;
+    border-radius: 5px;
+    font-family: Times New Roman;
+    font-size:20px;
+    background-color:  blue;
+    color:red;
+   
+   
+    text-align:center;
+    font-weight: bold;
+    
+    border: 1px solid brown;
+    border-collapse: collapse;
+            } 
+
+.bt2{
+    
+    -webkit-border-radius: 14;
+    -moz-border-radius: 14;
+    border-radius: 5px;
+    font-family: Times New Roman;
+    font-size:20px;
+    background-color:blue;
+    color:red;
+   
+   
+    text-align:center;
+    font-weight: bold;
+    
+    border: 1px solid brown;
+    border-collapse: collapse;
+    
+            } 
+
+
+    
+table, th, td {
+          
+          font-family: Times New Roman;
+         border: 1px solid green;
          border-collapse: collapse;
+         border-radius: 10px;
       }
+
+      
      th {
+         font-family: Times New Roman;
          padding: 5px;
         font-weight: bold;
-        color:GREEN;
-        font-size:100%;
+        color:blue;
+        font-size:150%;
 
-        }
-  </style>
+        } 
+	
+</style>
 
+ 
 
  
 </head>
 
-<body style="background-color:lightgrey">
+<body style="background-color:blue">
 
-<p> <button > Welcome </button> </p>
+<p> <button class="bt" > Welcome </button> </p>
 
   <table id="Texas">
        <tr>
@@ -166,7 +236,7 @@ google.setOnLoadCallback(drawChart);
   src="https://www.google.com/maps/embed/v1/view?key=AIzaSyCmU3Q3GZlS6aS6cf1fF4WtrybRzbvYbOY&center=-33.8569,151.2152&zoom=18&maptype=satellite">
 </iframe>
 
-    <div id="chart_div" style="width:400; height:300"></div>
+    <div id="chart_div" style="width:600; height:600"></div>
 
 
 
