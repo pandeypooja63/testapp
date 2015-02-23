@@ -1,0 +1,175 @@
+                                                                                                                       
+<!DOCTYPE html>
+<html>
+<head>
+
+<h1 style="text-align:center"; style ="color:red"; >Texas Top Attractions</h1>
+
+
+
+  <script 
+         src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js" >
+  </script>
+
+
+   <script>
+       function drawTable(data) {
+                 i=0;
+           while ( i < data.length) {
+                drawRow(data[i]);
+                i++ ;  }
+        }
+
+      function drawRow(k) {
+      var eachrow = $("<tr></tr>");
+     //var data = { k.p2009, k.p2010, k.p2011,k.p2012,k.p2013,k.p2014 ];
+      
+
+      $("#Texas").append(eachrow); 
+      eachrow.append($("<td>" + k.name + "</td>"))
+      eachrow.append($("<td>" + k.InterestingFacts + "</td>"));
+      eachrow.append($("<td>" + k.Thingstodo + "</td>"));
+      eachrow.append($("<td>" + "<input type='button' value='press me' onclick='mapping("+k.lattitude+","+k.longitude+")'></input>" + "</td>"));
+                    
+      eachrow.append($("<td>"+"<input type='button' value='Click here to see the trends' onclick='drawChart("+k.p2009 +","+ k.p2010+","+k.p2011+","+k.p2012+","+k.p2013+","+k.p2014+")'></input>"+"</td>"));                
+
+
+
+      }
+	function mapping(lattitude,longitude)
+	{
+		
+		newsource="https://www.google.com/maps/embed/v1/view?key=AIzaSyCmU3Q3GZlS6aS6cf1fF4WtrybRzbvYbOY&center="+lattitude+","+longitude+"&zoom=18&maptype=satellite"
+		$("iframe").attr('src',newsource);
+		$("iframe").show();
+	}
+
+
+      $(document).ready(function()
+       { 
+	    $("#Texas").hide();
+            $("iframe").hide();
+            $("#chart_div").hide();
+	    $("button").click(function()
+	      {
+		
+		$.get("/url", function(data)
+		{
+                         
+                           console.log(data);
+                         //  console.log(data1);
+                             drawTable(data);
+                        // chart.draw(data, options);
+
+                      // $("#chart_div").show();
+			$("#Texas").show();
+
+                        
+                        
+			$("button").hide();
+		});
+	   });
+        });
+
+</script>
+
+    <!--Load the AJAX API-->
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+//	console.log(a,y,z,p,q,r);
+   google.load('visualization', '1.0', {'packages':['corechart']});
+      
+      // Set a callback to run when the Google Visualization API is loaded.
+    //  google.setOnLoadCallback(drawChart);
+
+      // Callback that creates and populates a data table, 
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart(x,y,z,p,q,r) 
+	{
+google.setOnLoadCallback(drawChart);
+	console.log(x,y,z,p,q,r);
+      // Create the data table.
+      	var data = new google.visualization.DataTable();
+      	data.addColumn('string', 'Topping');
+      	data.addColumn('number', 'Slices');
+      	data.addRows([
+        ['2009', x],
+        ['2010', y],
+        ['2011', z], 
+        ['2012', p],
+        ['2013', q],
+        ['2014', r]
+      			]);
+
+      // Set chart options
+      	var options = {'title':'How Much Pizza I Ate Last Night',
+                     'width':400,
+                     'height':300};
+
+      // Instantiate and draw our chart, passing in some options.
+      	var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+      	chart.draw(data, options);
+	$("#chart_div").show();
+     	}
+
+ </script>
+
+
+
+ <style>
+
+      button {
+              color:blue ;
+              text-align:center;
+              background-color:black
+              font-weight: bold;
+              font-size : 160%; 
+              border: 1px solid brown;
+              border-collapse: collapse;
+              }
+      table, th, td {
+         border: 1px solid brown;
+         border-collapse: collapse;
+      }
+     th {
+         padding: 5px;
+        font-weight: bold;
+        color:GREEN;
+        font-size:100%;
+
+        }
+  </style>
+
+
+ 
+</head>
+
+<body style="background-color:lightgrey">
+
+<p> <button > Welcome </button> </p>
+
+  <table id="Texas">
+       <tr>
+          <th>Name</th>
+          <th>Interesting Facts</th> 
+          <th>Things To Do</th>
+          <th>Click here to locate on Google Maps</th>
+          <th>Tourist Trends</th>
+       </tr>
+   
+  </table> 
+<iframe
+  width="600"
+  height="450"
+  frameborder="0" style="border:0"
+  src="https://www.google.com/maps/embed/v1/view?key=AIzaSyCmU3Q3GZlS6aS6cf1fF4WtrybRzbvYbOY&center=-33.8569,151.2152&zoom=18&maptype=satellite">
+</iframe>
+
+    <div id="chart_div" style="width:400; height:300"></div>
+
+
+
+</body>
+
+</html>
